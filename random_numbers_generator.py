@@ -36,6 +36,14 @@ def multi_process_file_generation(output_file, number_of_elements, num_range=100
     with open(output_file, "w") as file:
         for chunk in results:
             file.write(",".join(chunk) + ",")
+     
+    with open(output_file, "r") as file:
+        content = file.read();
+        content = content.rstrip(",")
+    
+    with open(output_file, "w") as file:
+        file.write(content)
+
     end_time = time.time()
     print(f"Generowanie wielowątkowe zakończone w czasie: {end_time - start_time:.2f} sekund")
 
